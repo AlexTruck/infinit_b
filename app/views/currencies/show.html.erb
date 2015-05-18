@@ -1,0 +1,26 @@
+<h1><%= @currency.title %></h1>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    new Highcharts.Chart({
+      chart: {
+        renderTo: "curr_chart"
+      },
+      title: {
+        text: "По банкам Украины"
+      },
+      xAxis: {
+        type: "banks_data"
+      },
+      yAxis: {
+        title: {
+          text: "Доллары США"
+        }
+      },
+      series: [{
+        data: [1, 2, 5, 8, 10, 4]
+      }]
+    });
+  });
+</script>
+<div id="curr_chart"></div>

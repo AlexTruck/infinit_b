@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518011207) do
+ActiveRecord::Schema.define(version: 20150519144552) do
 
   create_table "banks", force: :cascade do |t|
     t.string   "title"
@@ -23,21 +23,17 @@ ActiveRecord::Schema.define(version: 20150518011207) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "bank_id"
   end
-
-  add_index "currencies", ["bank_id"], name: "index_currencies_on_bank_id"
 
   create_table "rates", force: :cascade do |t|
     t.string   "buy"
     t.string   "sale"
-    t.integer  "bank_id"
-    t.integer  "currency_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "rate_owner_id"
+    t.string   "rate_owner_type"
   end
 
-  add_index "rates", ["bank_id"], name: "index_rates_on_bank_id"
-  add_index "rates", ["currency_id"], name: "index_rates_on_currency_id"
+  add_index "rates", ["rate_owner_id"], name: "index_rates_on_rate_owner_id"
 
 end

@@ -1,6 +1,5 @@
 class Bank < ActiveRecord::Base
-  has_many :currencies
-  has_many :rates, through: :currencies
+  has_many :rates, as: :rate_owner
 
   validates :title, presence: true
 end

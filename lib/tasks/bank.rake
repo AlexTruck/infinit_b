@@ -26,9 +26,9 @@ namespace :bank do
 
       doc = Nokogiri::HTML(open(url))
 
-      title = doc.css('.mfcur-table-bankname').text.squish
-
-      Bank.create(title: title)
+      doc.css('.mfcur-table-bankname').each do |node|
+       @bank = Bank.create(title: node.text.squish)
+      end
     end
   end
 end

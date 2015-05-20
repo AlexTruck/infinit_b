@@ -1,7 +1,6 @@
 class Rate < ActiveRecord::Base
-  belongs_to :currency
+  belongs_to :rate_owner, polymorphic: true
 
-  validates :buy, presence: true
-  validates :sale, presence: true
-  validates :bank_id, :currency_id, uniqueness: true
+  validates_presence_of :buy, :sale
+  validates :rate_owner_id, uniqueness: true
 end

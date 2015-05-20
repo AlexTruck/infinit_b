@@ -1,5 +1,5 @@
-<% @currencies.each do |c| %>
+<% @currencies.each do |currency| %>
 <table>
-  <tr><%= link_to c.title, bank_currency_rate_path(c) %></tr>
+  <tr><%= link_to currency.title, currency_path(currency) %></tr>
 </table>
 <% end %>

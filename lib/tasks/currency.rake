@@ -26,10 +26,9 @@ namespace :currency do
 
       doc = Nokogiri::HTML(open(url))
 
-      title = doc.title
-
-      Bank.find(params:bank_id)
-      Currency.create(title: title)
+      doc.css('//div.mfm-col-content > table > tbody > tr > td.mfcur-table-cur').each do |node|
+        @currency = Currency.create(title: node.text.squish)
+      end
     end
   end
 end
